@@ -20,7 +20,7 @@ class ApiList(APIView):
         pagination_class = api_settings.DEFAULT_PAGINATION_CLASS
         paginator = pagination_class()
         queryset = Branches.objects.all()
-        bank_name = request.query_params.get('bank_nake', None)
+        bank_name = request.query_params.get('bank_name', None)
         city = request.query_params.get('city', None)
         if bank_name is not None:
             queryset = queryset.filter(bank__name=bank_name)
