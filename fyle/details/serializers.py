@@ -4,6 +4,7 @@ from .models import Branches, Banks
 class BankSerializer(serializers.ModelSerializer):
     class Meta:
         model = Banks
+        fields = ('name',)
 
 class BranchSerializer(serializers.ModelSerializer):
     class Meta:
