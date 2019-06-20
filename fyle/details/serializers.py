@@ -10,7 +10,7 @@ class BranchSerializer(serializers.ModelSerializer):
     class Meta:
         abstract = True
         model = Branches
-        fields = ('ifsc', 'bank', 'branch', 'address', 'city', 'district','state')
+        fields = ('ifsc', 'bank.name', 'branch', 'address', 'city', 'district','state')
 
 class BranchReadSerializer(BranchSerializer):
     bank = BankSerializer()
