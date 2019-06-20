@@ -10,6 +10,7 @@ from rest_framework.settings import api_settings
 
 
 class ApiList(APIView):
+    permission_classes = (IsAuthenticated,)
     """
     List all snippets, or create a new snippet.
     """
@@ -51,6 +52,7 @@ class ApiList(APIView):
 
 
 class ApiDetail(APIView):
+    permission_classes = (IsAuthenticated,)
     """
     Retrieve, update or delete a api instance.
     """
