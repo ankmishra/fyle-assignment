@@ -25,10 +25,15 @@ SECRET_KEY = '3&1b^w^1^@l&dv&tpn@peh07%_g1(hs4uub(u#y8*!d034z=^&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ankit-fyle.herokuapp.com"]
+ALLOWED_HOSTS = ["*","ankit-fyle.herokuapp.com"]
 
 
 # Application definition
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
