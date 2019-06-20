@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Branches, Banks
-from .serializers import BranchSerializer
+from .serializers import BranchReadSerializer
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -29,9 +29,9 @@ class ApiList(APIView):
 
         page = paginator.paginate_queryset(queryset, request)
         if page is not None:
-            serializer = BranchSerializer(page, many=True)
+            serializer = BranchReadSerializer(page, many=True)
             return paginator.get_paginated_response(serializer.data)
-        serializer = BranchSerializer(queryset, many=True)
+        serializer = BranchReadSerializer(queryset, many=True)
         return Response(serializer.data)
         # if limit is not None:
         #     serializer = ApiSerializer(limit, many=True)
@@ -65,13 +65,13 @@ class ApiDetail(APIView):
 
     def get(self, request, ifsc, format=None):
         branch = self.get_object(ifsc)
-        serializer = BranchSerializer(branch)
+        serializer = BranchReadSerializer(branch)
         return Response(serializer.data)
 
     def put(self, request, ifsc, format=None):
         branch = self.get_object(ifsc)
         print(branch)
-        serializer = BranchSerializer(branch, data=request.data)
+        serializer = BranchReadSerializer(branch, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
