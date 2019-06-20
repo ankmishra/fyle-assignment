@@ -67,6 +67,7 @@ class ApiDetail(APIView):
 
     def put(self, request, ifsc, format=None):
         branch = self.get_object(ifsc)
+        print(branch)
         serializer = BranchSerializer(branch, data=request.data)
         if serializer.is_valid():
             serializer.save()
